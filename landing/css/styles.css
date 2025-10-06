@@ -5,6 +5,9 @@
     padding: 1rem;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .header nav ul {
@@ -22,4 +25,76 @@
     width: 100px;
     height: auto;
 }
+
+.footer {
+    padding: 1rem;
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.footer img {
+    width: 50px;
+    height: auto;
+}
     
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.productos img {
+    width: 200px;
+    height: auto;
+}
+
+.productos h3 {
+    text-align: center;
+}
+
+.producto {
+    text-align: center;
+    background-color: #E8DCCA;
+    padding: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    text-align: left;
+}
+
+form button {
+    margin-top: 1rem;
+    background-color: #E8DCCA;
+    color: #000;
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+input {
+    margin-bottom: 1rem;
+}
+
+section:target {
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
