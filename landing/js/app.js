@@ -51,11 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const fechaNac = new Date(fechaNacimiento);
         const hoy = new Date();
-        const edad = hoy.getFullYear() - fechaNac.getFullYear();
+        let edad = hoy.getFullYear() - fechaNac.getFullYear();
         const mes = hoy.getMonth() - fechaNac.getMonth();
         
         if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
-            edad--; 
+            edad = edad - 1; 
         }
         
         if (edad < 18) {
@@ -63,7 +63,32 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        alert('¡Registro exitoso!');
-        form.reset();
+        const fechaFormateada = fechaNacimiento.split('T')[0];
+        
+        fetch('http://localhost:8000/api/registro.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                nombre,
+                email,
+                password,
+                fecha_nacimiento: fechaFormateada,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Registro exitoso');
+                form.reset();
+            } else {
+                alert(data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error al registrar:', error);
+            alert('Error al registrar');
+        });
     });
 });

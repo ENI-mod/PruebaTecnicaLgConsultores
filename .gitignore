@@ -1,0 +1,22 @@
+# Archivos de configuración sensibles
+
+# Archivos de entorno
+.env
+
+# Dependencias de Node
+/node_modules/
+
+# Archivos de configuración de IDE
+.vscode/
+.idea/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Archivos temporales
+*.tmp
+*.temp
